@@ -1,0 +1,21 @@
+{
+  "name": "brewpage-obsidian",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Obsidian plugin: publish notes to BrewPage.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && node esbuild.config.mjs production",
+    "dev": "node esbuild.config.mjs",
+    "test": "node --test test/*.test.ts"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "obsidian": "1.14.4",
+    "typescript": "6.0.3"
+  }
+}

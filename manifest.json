@@ -1,0 +1,10 @@
+{
+  "id": "brewpage-publisher",
+  "name": "BrewPage Publisher",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Publish the current note or a selection to BrewPage as a web page and copy the shareable link.",
+  "author": "Maksim Kochetkov",
+  "authorUrl": "https://github.com/kochetkov-ma",
+  "isDesktopOnly": false
+}
