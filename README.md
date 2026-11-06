@@ -1,5 +1,11 @@
 # BrewPage Publisher for Obsidian
 
+<p>
+<a href="https://github.com/kochetkov-ma/brewpage-obsidian/releases/latest"><img height="18" alt="Release" src="https://img.shields.io/github/v/release/kochetkov-ma/brewpage-obsidian"></a>
+<a href="https://community.obsidian.md/plugins/brewpage-publisher"><img height="18" alt="Obsidian community plugin" src="https://img.shields.io/badge/Obsidian-BrewPage%20Publisher-7c3aed"></a>
+<a href="https://github.com/kochetkov-ma/brewpage-obsidian/blob/main/LICENSE"><img height="18" alt="License MIT" src="https://img.shields.io/badge/license-MIT-green"></a>
+</p>
+
 Publish the current note, or the selected text, to [BrewPage](https://brewpage.app) as a styled web page and get a shareable link.
 
 ## Commands
@@ -44,6 +50,20 @@ npm run build   # tsc --noEmit + esbuild -> main.js (unminified)
 ```
 
 Releases are tagged with the exact `manifest.json` version (for example `1.0.0`) and carry `main.js` and `manifest.json`.
+
+## Related
+
+- [brewpage.app](https://brewpage.app): the hosting service; [API guide](https://brewpage.app/api); [OpenAPI docs](https://kochetkov-ma.github.io/brewpage-openapi/)
+- [brewpage-openapi](https://github.com/kochetkov-ma/brewpage-openapi): OpenAPI contract and the `brewpage-mcp` MCP server ([npm](https://www.npmjs.com/package/brewpage-mcp))
+- [brewpage-action](https://github.com/kochetkov-ma/brewpage-action): GitHub Action that publishes CI artifacts ([Marketplace](https://github.com/marketplace/actions/publish-to-brewpage))
+- [brewpage-cookbook](https://github.com/kochetkov-ma/brewpage-cookbook): interactive recipes published on BrewPage
+- [brewpage-browser-extension](https://github.com/kochetkov-ma/brewpage-browser-extension): browser extension that publishes pages, selections and files
+- [brewpage-codex-plugin](https://github.com/kochetkov-ma/brewpage-codex-plugin): Codex plugin with the publishing skill and remote MCP
+- [brewpage-publish-plugins](https://github.com/kochetkov-ma/brewpage-publish-plugins): publishing plugins for AI coding tools and the n8n node ([npm](https://www.npmjs.com/package/n8n-nodes-brewpage))
+- [langchain-brewpage](https://github.com/kochetkov-ma/langchain-brewpage): LangChain tools ([PyPI](https://pypi.org/project/langchain-brewpage/))
+- [llama-index-tools-brewpage](https://github.com/kochetkov-ma/llama-index-tools-brewpage): LlamaIndex tool spec ([PyPI](https://pypi.org/project/llama-index-tools-brewpage/))
+
+Support: [info@brewpage.app](mailto:info@brewpage.app)
 
 ## License
 
