@@ -37,7 +37,7 @@ This plugin sends data over the network only when you run one of its commands:
 
 ## Install
 
-From Obsidian: Settings -> Community plugins -> Browse -> search "BrewPage Publisher" (after directory approval).
+From Obsidian: Settings -> Community plugins -> Browse -> search "BrewPage Publisher", then Install and Enable. Plugin page: [community.obsidian.md/plugins/brewpage-publisher](https://community.obsidian.md/plugins/brewpage-publisher).
 
 Manually: download `main.js` and `manifest.json` from the [latest release](https://github.com/kochetkov-ma/brewpage-obsidian/releases/latest) into `<vault>/.obsidian/plugins/brewpage-publisher/`, then enable the plugin.
 
