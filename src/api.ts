@@ -31,7 +31,13 @@ export interface PublishInput {
   filename: string;
   namespace: string;
   ownerToken: string;
+  clientVersion: string;
   existing?: Publication;
+}
+
+// Fixed client label with the plugin version; carries nothing personal.
+export function clientLabel(version: string): string {
+  return `obsidian/${version || '0'}`;
 }
 
 export function normalizeNamespace(value: string): string | null {
@@ -79,17 +85,17 @@ function readResult(response: HttpResponse, fallback?: Publication): PublishResu
 export async function publishMarkdown(input: PublishInput, http: Http): Promise<PublishResult> {
   const body = JSON.stringify({ content: input.content, format: 'markdown', filename: input.filename });
   const { existing, ownerToken } = input;
+  const base = { 'Content-Type': 'application/json', 'X-BrewPage-Client': clientLabel(input.clientVersion) };
+  const headers: Record<string, string> = ownerToken ? { ...base, 'X-Owner-Token': ownerToken } : base;
   if (existing && ownerToken && existing.namespace === input.namespace) {
     const update = await http({
       url: `${API_BASE}/api/html/${encodeURIComponent(existing.namespace)}/${encodeURIComponent(existing.id)}`,
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'X-Owner-Token': ownerToken },
+      headers,
       body: JSON.stringify({ content: input.content, format: 'markdown' }),
     });
     if (update.status !== 404 && update.status !== 410) return readResult(update, existing);
   }
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-  if (ownerToken) headers['X-Owner-Token'] = ownerToken;
   const create = await http({
     url: `${API_BASE}/api/html?ns=${encodeURIComponent(input.namespace)}`,
     method: 'POST',

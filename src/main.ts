@@ -23,9 +23,16 @@ const DEFAULT_SETTINGS: BrewPageSettings = {
   publications: {},
 };
 
+const HELP_LINKS: ReadonlyArray<readonly [string, string]> = [
+  ['Help', 'https://brewpage.app/help'],
+  ['MCP setup and integrations', 'https://brewpage.app/integrations#remote-mcp'],
+  ['Guide for LLMs', 'https://brewpage.app/llms.txt'],
+  ['Feedback', 'mailto:info@brewpage.app'],
+];
+
 const http: Http = async (request) => {
   const response = await requestUrl({ ...request, contentType: request.headers['Content-Type'], throw: false });
-  let json: unknown = null;
+  let json: unknown;
   try {
     json = response.json;
   } catch {
@@ -116,6 +123,7 @@ export default class BrewPagePublisher extends Plugin {
           filename: noteFilename(basename),
           namespace: this.settings.namespace,
           ownerToken: this.settings.ownerToken,
+          clientVersion: this.manifest.version,
           existing,
         },
         http,
@@ -162,6 +170,17 @@ class BrewPageSettingTab extends PluginSettingTab {
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
+
+    new Setting(containerEl).setName('How to publish').setDesc(
+      createFragment((f) => {
+        f.appendText('Open a note and run "Publish note". Share the returned link. Keep any management link private.');
+        f.createEl('br');
+        HELP_LINKS.forEach(([text, href], index) => {
+          if (index > 0) f.appendText(' · ');
+          f.createEl('a', { text, href });
+        });
+      }),
+    );
 
     new Setting(containerEl)
       .setName('Namespace')

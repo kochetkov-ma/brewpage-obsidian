@@ -8,6 +8,12 @@
 
 Publish the current note, or the selected text, to [BrewPage](https://brewpage.app) as a styled web page and get a shareable link.
 
+## Quick start
+
+Install BrewPage Publisher in Obsidian. Open a note and run "BrewPage Publisher: Publish note" from the command palette. Share the returned link. Keep any management link private.
+
+[Help](https://brewpage.app/help) · [MCP setup and integrations](https://brewpage.app/integrations#remote-mcp) · [Guide for LLMs](https://brewpage.app/llms.txt) · [Feedback](mailto:info@brewpage.app)
+
 ## Commands
 
 - **Publish note**: publishes the active Markdown note. Publishing the same note again updates the same page and keeps its link.
@@ -30,7 +36,7 @@ Before sending, the plugin removes the YAML frontmatter, `%% comments %%` and `!
 This plugin sends data over the network only when you run one of its commands:
 
 - Service: BrewPage, `https://brewpage.app` (API: `POST /api/html`, `PUT /api/html/{namespace}/{id}`).
-- Data sent: the note or selection content (after the cleanup above), the note name as the page file name, the namespace and your owner token.
+- Data sent: the note or selection content (after the cleanup above), the note name as the page file name, the namespace and your owner token. Each request also carries a fixed client label with the plugin version (`X-BrewPage-Client: obsidian/<version>`), no personal data.
 - No account is needed; publishing is free. Pages expire after the BrewPage default retention period unless extended on brewpage.app.
 - No telemetry, analytics or background requests. No remote code is loaded.
 - Privacy policy: <https://brewpage.app/privacy>. Terms: <https://brewpage.app/terms>.
